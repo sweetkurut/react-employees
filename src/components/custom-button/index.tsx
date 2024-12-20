@@ -20,6 +20,7 @@ export const CustomButon = ({
   loading,
   shape,
   icon,
+  onClick,
 }: Props) => {
   return (
     <Form.Item>
@@ -30,6 +31,7 @@ export const CustomButon = ({
         loading={loading}
         shape={shape}
         icon={icon}
+        onClick={onClick}
       >
         {children}
       </Button>
