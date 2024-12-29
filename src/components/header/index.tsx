@@ -6,10 +6,22 @@ import {
   UserAddOutlined,
 } from "@ant-design/icons";
 import { CustomButon } from "../custom-button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Paths } from "../../paths";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, selectUser } from "../../features/auth/authSlice";
 
 const Header = () => {
+  const user = useSelector(selectUser);
+  const nav = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogoutClick = () => {
+    dispatch(logout());
+    nav(Paths.login);
+    localStorage.removeItem("token");
+  };
+
   return (
     <Layout.Header className={styles.header}>
       <Space className={styles.iconWrapper}>
@@ -19,26 +31,38 @@ const Header = () => {
         </Link>
       </Space>
 
-      <Space>
-        <Link to={Paths.register}>
+      {user ? (
+        <Space>
           <CustomButon
-            type="text"
-            icon={<UserAddOutlined />}
-            className={styles.authBtn}
-          >
-            Зарегистрировать
-          </CustomButon>
-        </Link>
-        <Link to={Paths.login}>
-          <CustomButon
-            type="text"
+            type="default"
             icon={<LoginOutlined />}
-            className={styles.authBtn}
+            onClick={handleLogoutClick}
           >
-            Войти
+            Выйти
           </CustomButon>
-        </Link>
-      </Space>
+        </Space>
+      ) : (
+        <Space>
+          <Link to={Paths.register}>
+            <CustomButon
+              type="text"
+              icon={<UserAddOutlined />}
+              className={styles.authBtn}
+            >
+              Зарегистрировать
+            </CustomButon>
+          </Link>
+          <Link to={Paths.login}>
+            <CustomButon
+              type="text"
+              icon={<LoginOutlined />}
+              className={styles.authBtn}
+            >
+              Войти
+            </CustomButon>
+          </Link>
+        </Space>
+      )}
     </Layout.Header>
   );
 };

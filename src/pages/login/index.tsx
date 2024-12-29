@@ -30,8 +30,6 @@ const Login = () => {
     }
   };
 
-  console.log(login);
-
   return (
     <Layout>
       <Row align="middle" justify="center">
