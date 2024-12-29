@@ -43,12 +43,16 @@ export const Employees = () => {
     }
   }, [nav, user]);
 
+  const goToAddEmployee = () => {
+    nav(Paths.emloyeeAdd);
+  };
+
   return (
     <Layout>
       <CustomButon
         type="primary"
         icon={<PlusCircleOutlined />}
-        onClick={() => null}
+        onClick={goToAddEmployee}
       >
         Добавить сотрудника
       </CustomButon>
