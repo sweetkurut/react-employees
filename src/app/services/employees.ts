@@ -40,7 +40,7 @@ export const emplyeesApi = api.injectEndpoints({
 })
 
 export const {useGetAllEmployeesQuery, 
-  useLazyGetEmployeeQuery, 
+  useGetEmployeeQuery,
   useEditEmployeeMutation, 
   useDeleteEmployeeMutation, 
   useAddEmployeeMutation
