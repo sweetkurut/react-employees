@@ -9,10 +9,11 @@ import { selectUser } from "../../features/auth/authSlice";
 import Layout from "../../components/layout";
 import { Descriptions, Divider, Modal, Space } from "antd";
 import { CustomButon } from "../../components/custom-button";
-import { DeleteFilled, EditOutlined } from "@ant-design/icons";
+import { DeleteFilled, EditOutlined, HomeOutlined } from "@ant-design/icons";
 import ErrorMessage from "../../components/error-message";
 import { Paths } from "../../paths";
 import { isErrorWithMessage } from "../../utils/is-error-message";
+import { Loader } from "../../ui/loader";
 
 export const EmployeeDetail = () => {
   const nav = useNavigate();
@@ -23,7 +24,7 @@ export const EmployeeDetail = () => {
   const [deleteEmployee] = useDeleteEmployeeMutation();
   const user = useSelector(selectUser);
 
-  if (isLoading) return <div>Загрузка...</div>;
+  if (isLoading) return <Loader />;
 
   if (!data) return <Navigate to={"/"} />;
 
@@ -52,10 +53,14 @@ export const EmployeeDetail = () => {
 
   return (
     <Layout>
+      <CustomButon type="default" icon={<HomeOutlined />}>
+        Недвижимости данного сотрудника
+      </CustomButon>
       <Descriptions title="Информация о сотруднике" bordered>
         <Descriptions.Item label="Имя" span={3}>
           {`${data.firstName} ${data.lastName}`}
         </Descriptions.Item>
+
         <Descriptions.Item label="Возраст" span={3}>
           {data.age}
         </Descriptions.Item>

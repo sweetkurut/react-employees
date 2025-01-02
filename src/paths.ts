@@ -6,5 +6,9 @@ export const Paths = {
   status: '/status',
   login: '/login',
   register: '/register',
+  realEstate: '/real-estate',
+  realEstateAdd: '/real-estate/add',
+  realEstateEdit: '/real-estate/edit',
+  profile: '/profile',
   notFound: '*',
 } as const;

@@ -27,20 +27,46 @@ const Header = () => {
       <Space className={styles.iconWrapper}>
         <TeamOutlined className={styles.teamIcon} />
         <Link to={Paths.home}>
-          <Typography.Title level={1}>Сотрудники</Typography.Title>
+          <Typography.Title level={1}>Дежурка</Typography.Title>
         </Link>
       </Space>
 
       {user ? (
-        <Space>
-          <CustomButon
-            type="default"
-            icon={<LoginOutlined />}
-            onClick={handleLogoutClick}
-          >
-            Выйти
-          </CustomButon>
-        </Space>
+        <div className={styles.nav}>
+          <div className={styles.nav_link}>
+            <Space>
+              <Link
+                className={styles.route_link}
+                to={Paths.realEstate}
+                // style={{
+                //   color: "white",
+                // }}
+              >
+                <span className={styles.navBtn}>Недвижимость</span>
+              </Link>
+            </Space>
+            <Space>
+              <Link
+                className={styles.route_link}
+                to={Paths.profile}
+                // style={{
+                //   color: "white",
+                // }}
+              >
+                <span className={styles.navBtn}>Профиль</span>
+              </Link>
+            </Space>
+          </div>
+          <Space>
+            <CustomButon
+              type="default"
+              icon={<LoginOutlined />}
+              onClick={handleLogoutClick}
+            >
+              Выйти
+            </CustomButon>
+          </Space>
+        </div>
       ) : (
         <Space>
           <Link to={Paths.register}>

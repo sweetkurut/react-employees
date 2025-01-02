@@ -8,7 +8,8 @@ export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
     auth,
-    employees
+    employees,
+    realEstate: employees
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware).prepend(listenerMiddleware.middleware)
 });

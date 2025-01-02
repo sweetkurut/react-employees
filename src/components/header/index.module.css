@@ -11,6 +11,31 @@
 .iconWrapper {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav_link {
+  display: flex;
+  gap: 30px;
+  color: inherit !important;
+  align-items: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.route_link {
+  color: white;
+}
+
+.route_link:hover {
+  color: rgb(189, 186, 186);
 }
 
 .teamIcon {
@@ -21,3 +46,5 @@
 .authBtn {
   font-size: 16px;
 }
+
+

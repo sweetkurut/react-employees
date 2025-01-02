@@ -30,6 +30,16 @@ const columns = [
     dataIndex: "address",
     key: "address",
   },
+  {
+    title: "Опыт",
+    dataIndex: "experiens",
+    key: "address",
+  },
+  {
+    title: "Продажи",
+    dataIndex: "sales",
+    key: "address",
+  },
 ];
 
 export const Employees = () => {
