@@ -1,4 +1,4 @@
-import { Card, Form, Row, Space, Typography } from "antd";
+import { Card, Form, Row, Select, Space, Typography } from "antd";
 import { CustomInput } from "../../components/custom-input";
 import { PasswordInput } from "../../components/password-input/input";
 import { CustomButon } from "../../components/custom-button";
@@ -20,10 +20,15 @@ const Register = () => {
   const user = useSelector(selectUser);
   const [error, setError] = useState<string>("");
   const [registerUser] = useRegisterMutation();
+  const [role, setRole] = useState<string>("employee");
 
   const register = async (data: Registered) => {
     try {
-      await registerUser(data).unwrap();
+      const payload = {
+        ...data,
+        role,
+      };
+      await registerUser(payload).unwrap();
       nav(Paths.home);
     } catch (error) {
       const maybeError = isErrorWithMessage(error);
@@ -38,6 +43,10 @@ const Register = () => {
     // } else {
     //   setError("Пользователь уже существует");
     // }
+  };
+
+  const handleChange = (value: string) => {
+    setRole(value);
   };
 
   return (
@@ -57,6 +66,17 @@ const Register = () => {
               name="confirmPassword"
               placeholder="Повторите пароль"
             />
+
+            <Select
+              defaultValue="Employee"
+              style={{ width: "430px", marginBottom: "20px" }}
+              onChange={handleChange}
+              options={[
+                { value: "admin", label: "Admin" },
+                { value: "employee", label: "Employee" },
+              ]}
+            />
+
             <CustomButon type="primary" htmlType="submit">
               Зарегистрироваться
             </CustomButon>

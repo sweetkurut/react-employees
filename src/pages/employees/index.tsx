@@ -31,12 +31,12 @@ const columns = [
     key: "address",
   },
   {
-    title: "Опыт",
+    title: "Опыт работы",
     dataIndex: "experiens",
     key: "address",
   },
   {
-    title: "Продажи",
+    title: "Кол-во продаж",
     dataIndex: "sales",
     key: "address",
   },

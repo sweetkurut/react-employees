@@ -24,6 +24,8 @@ export const EmployeeDetail = () => {
   const [deleteEmployee] = useDeleteEmployeeMutation();
   const user = useSelector(selectUser);
 
+  console.log(data, "sdcsdc");
+
   if (isLoading) return <Loader />;
 
   if (!data) return <Navigate to={"/"} />;
@@ -67,6 +69,12 @@ export const EmployeeDetail = () => {
         <Descriptions.Item label="Адрес" span={3}>
           {data.address}
         </Descriptions.Item>
+        {/* <Descriptions.Item label="Опыт работы" span={3}>
+          {data.experiens}
+        </Descriptions.Item>
+        <Descriptions.Item label="Кол-во продаж" span={3}>
+          {data.sales}
+        </Descriptions.Item> */}
       </Descriptions>
 
       {user?.id === data.userId && (

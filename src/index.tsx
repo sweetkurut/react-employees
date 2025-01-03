@@ -17,7 +17,7 @@ import { Status } from "./pages/status";
 import { EmployeeDetail } from "./pages/employee";
 import { EditEmployee } from "./pages/edit-employee";
 import { RealEstate } from "./pages/real-estate";
-import { Profile } from "./pages/profile";
+import Profile from "./pages/profile";
 
 const router = createBrowserRouter([
   {
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
   },
   {
     path: Paths.profile,
-    element: <Profile />,
+    element: <Profile role={"employee"} email={""} password={""} fullName={""} avatar={""} salesCount={0} realEstateCount={0} />,
   },
   {
     path: `${Paths.status}/:status`,
